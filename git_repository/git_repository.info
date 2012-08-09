@@ -1,0 +1,8 @@
+name = Git repository
+description = Manages git repo access
+core = 7.x
+
+dependencies[] = tec
+dependencies[] = git_server
+
+files[] = git_repository.class.inc

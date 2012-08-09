@@ -1,0 +1,8 @@
+name = "Git"
+description = "Provides GitListLib library for git in php"
+core = 7.x
+
+dependencies[] = splclassloader
+
+files[] = 'gitlistlib/SplClassLoader.php'
+files[] = 'git.controller.features.inc'
