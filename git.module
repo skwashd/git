@@ -36,6 +36,8 @@ function git_get_client($id = '') {
     ));
   }
 
+  drupal_alter('git_client', $client, $id);
+
   return $client;
 }
 
