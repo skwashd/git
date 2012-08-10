@@ -36,6 +36,10 @@ function git_get_client($id = '') {
     ));
   }
 
+  $initial_env = variable_get('shell_client_initial_env', array());
+  drupal_alter('shell_client_initial_env', $initial_env);
+  $client->getShellEnvironment()->setAll($initial_env);
+
   drupal_alter('git_client', $client, $id);
 
   return $client;
