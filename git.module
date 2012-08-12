@@ -24,8 +24,11 @@ function git_get_client($id = '') {
   $client =& drupal_static(__FUNCTION__ . ($id ? "_$id" : ''));
 
   if (empty($client)) {
+    $initial_env = variable_get('shell_client_initial_env', array());
+    drupal_alter('shell_client_initial_env', $initial_env);
+
     $client = new Git\Client(array('path' => GIT_CMD, 'hidden' => array()));
-    $client->setSSHPassphrase(variable_get("git_sshpass_$id", NULL));
+    $client->getShellEnvironment()->setAll($initial_env);
 
     global $user;
     $client->getGitEnvironment()->setAll(array(
@@ -34,13 +37,12 @@ function git_get_client($id = '') {
       'GIT_COMMITTER_NAME' => format_username($user),
       'GIT_COMMITTER_EMAIL' => $user->mail,
     ));
+    $pass = variable_get("git_sshpass_$id", NULL);
+    if ($pass) {
+      $client->setSSHPassphrase($pass);
+    }
+    drupal_alter('git_client', $client, $id);
   }
-
-  $initial_env = variable_get('shell_client_initial_env', array());
-  drupal_alter('shell_client_initial_env', $initial_env);
-  $client->getShellEnvironment()->setAll($initial_env);
-
-  drupal_alter('git_client', $client, $id);
 
   return $client;
 }
