@@ -55,5 +55,5 @@ function git_get_client($id = '') {
  */
 function git_get_repo() {
   $git = git_get_client();
-  return $git->getRepository(__DIR__);
+  return $git->getRepository(DRUPAL_ROOT);
 }
