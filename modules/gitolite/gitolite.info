@@ -1,0 +1,16 @@
+name = Gitolite
+description = Manages gitolite repo access
+core = 7.x
+package = Git
+version = 7.x-1.0-dev
+project = gitolite
+dependencies[] = composer_autoload
+dependencies[] = features
+dependencies[] = field_sql_storage
+dependencies[] = git
+dependencies[] = git_server
+dependencies[] = git_repository
+dependencies[] = sshkey
+dependencies[] = text
+features[features_api][] = api:1
+features[field][] = git_server-gitolite-field_admin_users

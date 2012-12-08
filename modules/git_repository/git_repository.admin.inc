@@ -64,8 +64,8 @@ function git_repositories_list() {
         'links',
         array(
           'links' => array(
-            array('title' => 'edit', 'href' => $server_uri['path'] . "/edit"),
-            array('title' => 'delete', 'href' => $server_uri['path'] . "/delete"),
+            array('title' => 'edit', 'href' => $uri['path'] . "/edit"),
+            array('title' => 'delete', 'href' => $uri['path'] . "/delete"),
           ),
         )
       ),

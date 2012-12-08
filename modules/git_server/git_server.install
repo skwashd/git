@@ -1,57 +1,63 @@
 <?php
 /**
  * @file
- *  Install functions for Git Repository
+ *   Git Server module install functions.
  */
 
 /**
  * Implements hook_schema().
  */
-function git_repository_schema() {
+function git_server_schema() {
   $schema = array();
 
-  $schema['git_repository'] = array(
-    'description' => 'Git Repository',
+  $schema['git_server'] = array(
+    'description' => 'Git Server',
     'fields' => array(
-      'rid' => array(
+      'sid' => array(
         'description' => 'Primary key.',
         'type' => 'serial',
         'unsigned' => TRUE,
         'not null' => TRUE,
       ),
       'name' => array(
-        'description' => 'The repository name.',
+        'description' => 'Machine name.',
         'type' => 'varchar',
         'length' => '32',
         'not null' => TRUE,
       ),
+      'bundle' => array(
+        'description' => 'The bundle type for the server.',
+        'type' => 'varchar',
+        'length' => '32',
+        'not null' => TRUE,
+        'default' => '',
+      ),
       'title' => array(
-        'description' => 'The repository title.',
+        'description' => 'The server title.',
         'type' => 'varchar',
         'length' => '255',
         'not null' => TRUE,
       ),
-      'bundle' => array(
-        'description' => 'The bundle type for the repository.',
+      'user' => array(
+        'description' => 'The user that can access the server.',
         'type' => 'varchar',
-        'length' => 32,
+        'length' => '32',
         'not null' => TRUE,
-        'default' => '',
+      ),
+      'host' => array(
+        'description' => 'The host the server lives on.',
+        'type' => 'varchar',
+        'length' => '255',
+        'not null' => TRUE,
       ),
       'created' => array(
-        'description' => 'Repository creation timestamp.',
+        'description' => 'Server creation timestamp.',
         'type' => 'int',
         'not null' => TRUE,
       ),
       'modified' => array(
-        'description' => 'Repository last modified timestamp.',
+        'description' => 'Server last modified timestamp.',
         'type' => 'int',
-        'not null' => TRUE,
-      ),
-      'server_name' => array(
-        'description' => 'Server this repository is in.',
-        'type' => 'varchar',
-        'length' => '32',
         'not null' => TRUE,
       ),
       'status' => array(
@@ -70,13 +76,12 @@ function git_repository_schema() {
         'not null' => FALSE,
       ),
     ),
-    'primary key' => array('rid'),
+    'primary key' => array('sid'),
     'unique keys' => array(
       'name' => array('name'),
     ),
     'indexes' => array(
       'bundle' => array('bundle'),
-      'server' => array('server_name'),
     ),
   );
 

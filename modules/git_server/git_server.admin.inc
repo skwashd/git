@@ -93,7 +93,7 @@ function git_server_add() {
   $base_add_url = 'git/server/add';
 
   if (count($bundles) == 1) {
-    drupal_goto("$base_add_url/" . reset(array_keys($bundles)));
+    drupal_goto("$base_add_url/" . current(array_keys($bundles)));
   }
 
   $links = array(

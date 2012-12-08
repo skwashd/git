@@ -1,0 +1,11 @@
+name = Git server
+description = Manages gitolite based git servers.
+core = 7.x
+package = Git
+
+dependencies[] = tec
+dependencies[] = git
+
+files[] = git_server.class.inc
+
+configure = admin/config/development/git

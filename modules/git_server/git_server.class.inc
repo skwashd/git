@@ -23,7 +23,6 @@ class GitServer extends Entity {
     parent::__construct($values, 'git_server');
   }
 
-  
   /**
    * Generates the URI for the entity.
    */

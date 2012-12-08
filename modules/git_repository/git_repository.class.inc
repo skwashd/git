@@ -27,7 +27,6 @@ class GitRepository extends Entity {
     parent::__construct($values, 'git_repository');
   }
 
-  
   /**
    * Generates the URI for the entity.
    */
@@ -119,8 +118,8 @@ class GitRepository extends Entity {
     );
 
     $content['server_url'] = $defaults + array(
-      '#title' => 'Server URL',
-      0 => array('#markup' => check_plain("{$git_server->user}@{$git_server->host}")),
+      '#title' => 'Repo URL',
+      0 => array('#markup' => check_plain("{$git_server->user}@{$git_server->host}:{$this->name}.git")),
     );
 
     return $content;

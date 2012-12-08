@@ -1,8 +1,9 @@
 name = "Git"
-description = "Provides GitListLib library for git in php"
+description = "Wrapper for the Gitter library."
 core = 7.x
+package = Git
 
-dependencies[] = splclassloader
+dependencies[] = composer_autoload
 
 files[] = 'gitlistlib/SplClassLoader.php'
 files[] = 'git.controller.features.inc'
